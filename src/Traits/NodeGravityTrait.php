@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Goose\Traits;
 
@@ -18,7 +18,7 @@ trait NodeGravityTrait {
      *
      * @return int
      */
-    private function getScore(Element $node) {
+    private function getScore(Element $node): int {
         return (int)$node->attr('gravityScore');
     }
 
@@ -29,7 +29,7 @@ trait NodeGravityTrait {
      * @param Element $node
      * @param int $addToScore
      */
-    private function updateScore(Element $node, $addToScore) {
+    private function updateScore(Element $node, $addToScore): void {
         $currentScore = (int)$node->attr('gravityScore');
 
         $node->attr('gravityScore', $currentScore + $addToScore);
@@ -41,7 +41,7 @@ trait NodeGravityTrait {
      * @param Element $node
      * @param int $addToCount
      */
-    private function updateNodeCount(Element $node, $addToCount) {
+    private function updateNodeCount(Element $node, $addToCount): void {
         $currentScore = (int)$node->attr('gravityNodes');
 
         $node->attr('gravityNodes', $currentScore + $addToCount);

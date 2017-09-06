@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Goose;
 
@@ -36,8 +36,10 @@ class Client {
     /**
      * @param string $url
      * @param string $rawHTML
+     *
+     * @return Article
      */
-    public function extractContent($url, $rawHTML = null) {
+    public function extractContent($url, $rawHTML = null): ?Article {
         $crawler = new Crawler($this->config);
         $article = $crawler->crawl($url, $rawHTML);
 

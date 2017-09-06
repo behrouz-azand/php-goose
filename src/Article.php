@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Goose;
 
 use Goose\Images\Image;
-use DOMWrap\Element;
-use DOMWrap\Document;
+use DOMWrap\{Element, Document};
 
 /**
  * Article
@@ -20,13 +19,19 @@ class Article {
      */
     protected $language;
 
-    /** @param string $language */
-    public function setLanguage($language) {
+    /**
+     * @param string $language
+     *
+     * @return self
+     */
+    public function setLanguage($language): self {
         $this->language = $language;
+
+        return $this;
     }
 
     /** @return string */
-    public function getLanguage() {
+    public function getLanguage(): string {
         return $this->language;
     }
 
@@ -35,15 +40,21 @@ class Article {
      *
      * @var string[]
      */
-    protected $openGraph;
+    protected $openGraph = [];
 
-    /** @param string[] $openGraph */
-    public function setOpenGraph($openGraph) {
+    /**
+     * @param string[] $openGraph
+     *
+     * @return self
+     */
+    public function setOpenGraph($openGraph): self {
         $this->openGraph = $openGraph;
+
+        return $this;
     }
 
     /** @return string[] */
-    public function getOpenGraph() {
+    public function getOpenGraph(): array {
         return $this->openGraph;
     }
 
@@ -54,13 +65,19 @@ class Article {
      */
     protected $title;
 
-    /** @param string $title */
-    public function setTitle($title) {
+    /**
+     * @param string $title
+     *
+     * @return self
+     */
+    public function setTitle($title): self {
         $this->title = $title;
+
+        return $this;
     }
 
     /** @return string */
-    public function getTitle() {
+    public function getTitle(): string {
         return $this->title;
     }
 
@@ -68,17 +85,23 @@ class Article {
      * Stores the lovely, pure text from the article, stripped of html, formatting, etc...
      * just raw text with paragraphs separated by newlines. This is probably what you want to use.
      *
-     * @var string
+     * @var string|null
      */
     protected $cleanedArticleText;
 
-    /** @param string $cleanedArticleText */
-    public function setCleanedArticleText($cleanedArticleText) {
+    /**
+     * @param string $cleanedArticleText
+     *
+     * @return self
+     */
+    public function setCleanedArticleText($cleanedArticleText): self {
         $this->cleanedArticleText = $cleanedArticleText;
+
+        return $this;
     }
 
-    /** @return string */
-    public function getCleanedArticleText() {
+    /** @return string|null */
+    public function getCleanedArticleText(): ?string {
         return $this->cleanedArticleText;
     }
 
@@ -89,13 +112,19 @@ class Article {
      */
     protected $htmlArticle;
 
-    /** @param string $htmlArticle */
-    public function setHtmlArticle($htmlArticle) {
+    /**
+     * @param string $htmlArticle
+     *
+     * @return self
+     */
+    public function setHtmlArticle($htmlArticle): self {
         $this->htmlArticle = $htmlArticle;
+
+        return $this;
     }
 
     /** @return string */
-    public function getHtmlArticle() {
+    public function getHtmlArticle(): string {
         return $this->htmlArticle;
     }
 
@@ -106,13 +135,19 @@ class Article {
      */
     protected $metaDescription;
 
-    /** @param string $metaDescription */
-    public function setMetaDescription($metaDescription) {
+    /**
+     * @param string $metaDescription
+     *
+     * @return self
+     */
+    public function setMetaDescription($metaDescription): self {
         $this->metaDescription = $metaDescription;
+
+        return $this;
     }
 
     /** @return string */
-    public function getMetaDescription() {
+    public function getMetaDescription(): string {
         return $this->metaDescription;
     }
 
@@ -123,47 +158,65 @@ class Article {
      */
     protected $metaKeywords;
 
-    /** @param string $metaKeywords */
-    public function setMetaKeywords($metaKeywords) {
+    /**
+     * @param string $metaKeywords
+     *
+     * @return self
+     */
+    public function setMetaKeywords($metaKeywords): self {
         $this->metaKeywords = $metaKeywords;
+
+        return $this;
     }
 
     /** @return string */
-    public function getMetaKeywords() {
+    public function getMetaKeywords(): string {
         return $this->metaKeywords;
     }
 
     /**
      * The canonical link of this article if found in the meta data
      *
-     * @var string
+     * @var string|null
      */
     protected $canonicalLink;
 
-    /** @param string $canonicalLink */
-    public function setCanonicalLink($canonicalLink) {
+    /**
+     * @param string $canonicalLink
+     *
+     * @return self
+     */
+    public function setCanonicalLink($canonicalLink): self {
         $this->canonicalLink = $canonicalLink;
+
+        return $this;
     }
 
-    /** @return string */
-    public function getCanonicalLink() {
+    /** @return string|null */
+    public function getCanonicalLink(): ?string {
         return $this->canonicalLink;
     }
 
     /**
      * Domain of the article we're parsing
      *
-     * @var string
+     * @var string|null
      */
     protected $domain;
 
-    /** @param string $domain */
-    public function setDomain($domain) {
+    /**
+     * @param string $domain
+     *
+     * @return self
+     */
+    public function setDomain($domain): self {
         $this->domain = $domain;
+
+        return $this;
     }
 
-    /** @return string */
-    public function getDomain() {
+    /** @return string|null */
+    public function getDomain(): ?string {
         return $this->domain;
     }
 
@@ -174,13 +227,19 @@ class Article {
      */
     protected $topNode;
 
-    /** @param Element|null $topNode */
-    public function setTopNode(Element $topNode = null) {
+    /**
+     * @param Element|null $topNode
+     *
+     * @return self
+     */
+    public function setTopNode(Element $topNode = null): ?self {
         $this->topNode = $topNode;
+
+        return $this;
     }
 
     /** @return Element|null */
-    public function getTopNode() {
+    public function getTopNode(): ?Element {
         return $this->topNode;
     }
 
@@ -191,13 +250,19 @@ class Article {
      */
     protected $topImage;
 
-    /** @param Image|null $topImage */
-    public function setTopImage(Image $topImage = null) {
+    /**
+     * @param Image|null $topImage
+     *
+     * @return self
+     */
+    public function setTopImage(Image $topImage = null): ?self {
         $this->topImage = $topImage;
+
+        return $this;
     }
 
     /** @return Image|null */
-    public function getTopImage() {
+    public function getTopImage(): ?Image {
         return $this->topImage;
     }
 
@@ -208,13 +273,19 @@ class Article {
      */
     protected $allImages = [];
 
-    /** @param Image[] $allImages */
-    public function setAllImages($allImages = []) {
+    /**
+     * @param Image[] $allImages
+     *
+     * @return self
+     */
+    public function setAllImages($allImages = []): self {
         $this->allImages = $allImages;
+
+        return $this;
     }
 
     /** @return Image[] */
-    public function getAllImages() {
+    public function getAllImages(): array {
         return $this->allImages;
     }
 
@@ -225,13 +296,19 @@ class Article {
      */
     protected $tags = [];
 
-    /** @param string[] $tags */
-    public function setTags($tags) {
+    /**
+     * @param string[] $tags
+     *
+     * @return self
+     */
+    public function setTags($tags): self {
         $this->tags = $tags;
+
+        return $this;
     }
 
     /** @return string[] */
-    public function getTags() {
+    public function getTags(): array {
         return $this->tags;
     }
 
@@ -242,13 +319,19 @@ class Article {
      */
     protected $links = [];
 
-    /** @param string[] $links */
-    public function setLinks($links) {
+    /**
+     * @param string[] $links
+     *
+     * @return self
+     */
+    public function setLinks($links): self {
         $this->links = $links;
+
+        return $this;
     }
 
     /** @return string[] */
-    public function getLinks() {
+    public function getLinks(): array {
         return $this->links;
     }
 
@@ -259,13 +342,19 @@ class Article {
      */
     protected $videos = [];
 
-    /** @param string[] $videos */
-    public function setVideos($videos) {
+    /**
+     * @param string[] $videos
+     *
+     * @return self
+     */
+    public function setVideos($videos): self {
         $this->videos = $videos;
+
+        return $this;
     }
 
     /** @return string[] */
-    public function getVideos() {
+    public function getVideos(): array {
         return $this->videos;
     }
 
@@ -273,17 +362,23 @@ class Article {
      * Final URL that we're going to try and fetch content against, this would be expanded if any
      * escaped fragments were found in the starting url
      *
-     * @var string
+     * @var string|null
      */
     protected $finalUrl;
 
-    /** @param string $finalUrl */
-    public function setFinalUrl($finalUrl) {
+    /**
+     * @param string $finalUrl
+     *
+     * @return self
+     */
+    public function setFinalUrl($finalUrl): self {
         $this->finalUrl = $finalUrl;
+
+        return $this;
     }
 
-    /** @return string */
-    public function getFinalUrl() {
+    /** @return string|null */
+    public function getFinalUrl(): ?string {
         return $this->finalUrl;
     }
 
@@ -294,13 +389,19 @@ class Article {
      */
     protected $linkhash;
 
-    /** @param string $linkhash */
-    public function setLinkhash($linkhash) {
+    /**
+     * @param string $linkhash
+     *
+     * @return self
+     */
+    public function setLinkhash($linkhash): self {
         $this->linkhash = $linkhash;
+
+        return $this;
     }
 
     /** @return string */
-    public function getLinkhash() {
+    public function getLinkhash(): string {
         return $this->linkhash;
     }
 
@@ -311,13 +412,19 @@ class Article {
      */
     protected $rawHtml;
 
-    /** @param string $rawHtml */
-    public function setRawHtml($rawHtml) {
+    /**
+     * @param string $rawHtml
+     *
+     * @return self
+     */
+    public function setRawHtml($rawHtml): self {
         $this->rawHtml = $rawHtml;
+
+        return $this;
     }
 
     /** @return string */
-    public function getRawHtml() {
+    public function getRawHtml(): string {
         return $this->rawHtml;
     }
 
@@ -328,13 +435,19 @@ class Article {
      */
     protected $doc;
 
-    /** @param Document $doc */
-    public function setDoc(Document $doc) {
+    /**
+     * @param Document $doc
+     *
+     * @return self
+     */
+    public function setDoc(Document $doc): self {
         $this->doc = $doc;
+
+        return $this;
     }
 
     /** @return Document */
-    public function getDoc() {
+    public function getDoc(): Document {
         return $this->doc;
     }
 
@@ -346,13 +459,19 @@ class Article {
      */
     protected $rawDoc;
 
-    /** @param Document $rawDoc */
-    public function setRawDoc(Document $rawDoc) {
+    /**
+     * @param Document $rawDoc
+     *
+     * @return self
+     */
+    public function setRawDoc(Document $rawDoc): self {
         $this->rawDoc = $rawDoc;
+
+        return $this;
     }
 
     /** @return Document */
-    public function getRawDoc() {
+    public function getRawDoc(): Document {
         return $this->rawDoc;
     }
 
@@ -363,13 +482,19 @@ class Article {
      */
     protected $rawResponse;
 
-    /** @param \Psr\Http\Message\ResponseInterface|null $rawResponse */
-    public function setRawResponse(\Psr\Http\Message\ResponseInterface $rawResponse) {
+    /**
+     * @param \Psr\Http\Message\ResponseInterface|null $rawResponse
+     *
+     * @return self
+     */
+    public function setRawResponse(\Psr\Http\Message\ResponseInterface $rawResponse): self {
         $this->rawResponse = $rawResponse;
+
+        return $this;
     }
 
     /** @return \Psr\Http\Message\ResponseInterface */
-    public function getRawResponse() {
+    public function getRawResponse(): \Psr\Http\Message\ResponseInterface {
         return $this->rawResponse;
     }
 
@@ -380,13 +505,19 @@ class Article {
      */
     protected $publishDate;
 
-    /** @param \DateTime|null $publishDate */
-    public function setPublishDate(\DateTime $publishDate = null) {
+    /**
+     * @param \DateTime|null $publishDate
+     *
+     * @return self
+     */
+    public function setPublishDate(\DateTime $publishDate = null): ?self {
         $this->publishDate = $publishDate;
+
+        return $this;
     }
 
     /** @return \DateTime|null */
-    public function getPublishDate() {
+    public function getPublishDate(): \DateTime {
         return $this->publishDate;
     }
 
@@ -397,13 +528,19 @@ class Article {
      */
     protected $additionalData;
 
-    /** @param string $additionalData */
-    public function setAdditionalData($additionalData) {
+    /**
+     * @param string $additionalData
+     *
+     * @return self
+     */
+    public function setAdditionalData($additionalData): self {
         $this->additionalData = $additionalData;
+
+        return $this;
     }
 
     /** @return string */
-    public function getAdditionalData() {
+    public function getAdditionalData(): string {
         return $this->additionalData;
     }
 
@@ -414,13 +551,19 @@ class Article {
      */
     protected $openGraphData;
 
-    /** @param string $openGraphData */
-    public function setOpenGraphData($openGraphData) {
+    /**
+     * @param string $openGraphData
+     *
+     * @return self
+     */
+    public function setOpenGraphData($openGraphData): self {
         $this->openGraphData = $openGraphData;
+
+        return $this;
     }
 
     /** @return string */
-    public function getOpenGraphData() {
+    public function getOpenGraphData(): string {
         return $this->openGraphData;
     }
 
@@ -431,13 +574,19 @@ class Article {
      */
     protected $popularWords = [];
 
-    /** @param string[] $popularWords */
-    public function setPopularWords($popularWords) {
+    /**
+     * @param string[] $popularWords
+     *
+     * @return self
+     */
+    public function setPopularWords($popularWords): self {
         $this->popularWords = $popularWords;
+
+        return $this;
     }
 
     /** @return string[] */
-    public function getPopularWords() {
+    public function getPopularWords(): array {
         return $this->popularWords;
     }
 }

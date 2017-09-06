@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Goose\Text;
 
@@ -36,7 +36,7 @@ class StopWords
     /**
      * @return Configuration
      */
-    public function config() {
+    public function config(): Configuration {
         return $this->config;
     }
 
@@ -45,14 +45,14 @@ class StopWords
      *
      * @return string
      */
-    public function removePunctuation($str) {
+    public function removePunctuation($str): string {
         return preg_replace("/[[:punct:]]+/", '', $str);
     }
 
     /**
      * @return string
      */
-    public function getLanguage() {
+    public function getLanguage(): string {
         list($language) = explode('-', $this->config()->get('language'));
 
         if (!in_array($language, $this->languages)) {
@@ -62,9 +62,9 @@ class StopWords
     }
 
     /**
-     * @return string[]
+     * @return mixed
      */
-    public function getWordList() {
+    public function getWordList(): array {
         if (empty($this->cached)) {
             $file = sprintf(__DIR__ . '/../../resources/text/stopwords-%s.txt', $this->getLanguage());
 
@@ -79,7 +79,7 @@ class StopWords
      *
      * @return WordStats
      */
-    public function getStopwordCount($content) {
+    public function getStopwordCount($content): WordStats {
         if (empty($content)) {
             return new WordStats();
         }
@@ -99,12 +99,5 @@ class StopWords
             'stopWordCount' => count($overlappingStopWords),
             'stopWords' => $overlappingStopWords,
         ]);
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getCurrentStopWords() {
-        return $this->getWordList();
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Goose\Traits;
 
@@ -21,7 +21,7 @@ trait NodeCommonTrait {
      *
      * @return bool
      */
-    private function isHighLinkDensity(Element $node, $limit = 1.0) {
+    private function isHighLinkDensity(Element $node, $limit = 1.0): bool {
         $links = $node->find('a, [onclick]');
 
         if ($links->count() == 0) {
