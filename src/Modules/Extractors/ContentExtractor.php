@@ -54,7 +54,7 @@ class ContentExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return float
      */
-    private function getTopNodeCandidateScore(Element $node, $i, $totalNodes): float {
+    private function getTopNodeCandidateScore(Element $node, int $i, int $totalNodes): float {
         $boostScore = (1.0 / ($i + 1)) * 50;
         $bottomNodesForNegativeScore = $totalNodes * 0.25;
 
@@ -80,7 +80,7 @@ class ContentExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return Element|null
      */
-    private function getTopNodeByScore($nodes): ?Element {
+    private function getTopNodeByScore(array $nodes): ?Element {
         $topNode = null;
         $topNodeScore = 0;
 
@@ -106,11 +106,11 @@ class ContentExtractor extends AbstractModule implements ModuleInterface {
 
     /**
      * @param Element $node
-     * @param double $upscore
+     * @param float $upscore
      *
      * @return self
      */
-    private function calculateBestNodeCandidateScores(Element $node, $upscore): self {
+    private function calculateBestNodeCandidateScores(Element $node, float $upscore): self {
         if ($node->parent() instanceof Element) {
             $this->updateScore($node->parent(), $upscore);
             $this->updateNodeCount($node->parent(), 1);
@@ -130,7 +130,7 @@ class ContentExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return array
      */
-    private function updateBestNodeCandidates(Element $node, $nodeCandidates): array {
+    private function updateBestNodeCandidates(Element $node, array $nodeCandidates): array {
         if (!in_array($node->parent(), $nodeCandidates, true)) {
             if ($node->parent() instanceof Element) {
                 $nodeCandidates[] = $node->parent();

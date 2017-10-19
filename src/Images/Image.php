@@ -32,7 +32,7 @@ class Image {
      *
      * @return self
      */
-    public function setTopImageNode($topImageNode): self {
+    public function setTopImageNode(Element $topImageNode): self {
         $this->topImageNode = $topImageNode;
 
         return $this;
@@ -53,7 +53,7 @@ class Image {
      *
      * @return self
      */
-    public function setImageSrc($imageSrc): self {
+    public function setImageSrc(string $imageSrc): self {
         $this->imageSrc = $imageSrc;
 
         return $this;
@@ -66,15 +66,15 @@ class Image {
         return $this->imageSrc;
     }
 
-    /** @var double */
+    /** @var float */
     private $imageScore = 0.0;
 
     /**
-     * @param double $imageScore
+     * @param float $imageScore
      *
      * @return self
      */
-    public function setImageScore($imageScore): self {
+    public function setImageScore(float $imageScore): self {
         $this->imageScore = $imageScore;
 
         return $this;
@@ -87,15 +87,15 @@ class Image {
         return $this->imageScore;
     }
 
-    /** @var double */
+    /** @var float */
     private $confidenceScore = 0.0;
 
     /**
-     * @param double $confidenceScore
+     * @param float $confidenceScore
      *
      * @return self
      */
-    public function setConfidenceScore($confidenceScore): self {
+    public function setConfidenceScore(float $confidenceScore): self {
         $this->confidenceScore = $confidenceScore;
 
         return $this;
@@ -116,7 +116,7 @@ class Image {
      *
      * @return self
      */
-    public function setHeight($height): self {
+    public function setHeight(int $height): self {
         $this->height = $height;
 
         return $this;
@@ -137,7 +137,7 @@ class Image {
      *
      * @return self
      */
-    public function setWidth($width): self {
+    public function setWidth(int $width): self {
         $this->width = $width;
 
         return $this;
@@ -158,7 +158,7 @@ class Image {
      *
      * @return self
      */
-    public function setImageExtractionType($imageExtractionType): self {
+    public function setImageExtractionType(string $imageExtractionType): self {
         $this->imageExtractionType = $imageExtractionType;
 
         return $this;
@@ -179,7 +179,7 @@ class Image {
      *
      * @return self
      */
-    public function setBytes($bytes): self {
+    public function setBytes(int $bytes): self {
         $this->bytes = $bytes;
 
         return $this;

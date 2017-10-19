@@ -37,7 +37,7 @@ class LocallyStoredImage {
      *
      * @return self
      */
-    public function setImgSrc($imgSrc): self {
+    public function setImgSrc(string $imgSrc): self {
         $this->imgSrc = $imgSrc;
 
         return $this;
@@ -58,7 +58,7 @@ class LocallyStoredImage {
      *
      * @return self
      */
-    public function setLocalFileName($localFileName): self {
+    public function setLocalFileName(string $localFileName): self {
         $this->localFileName = $localFileName;
 
         return $this;
@@ -79,7 +79,7 @@ class LocallyStoredImage {
      *
      * @return self
      */
-    public function setLinkhash($linkhash): self {
+    public function setLinkhash(string $linkhash): self {
         $this->linkhash = $linkhash;
 
         return $this;
@@ -100,7 +100,7 @@ class LocallyStoredImage {
      *
      * @return self
      */
-    public function setBytes($bytes): self {
+    public function setBytes(int $bytes): self {
         $this->bytes = $bytes;
 
         return $this;
@@ -121,7 +121,7 @@ class LocallyStoredImage {
      *
      * @return self
      */
-    public function setFileExtension($fileExtension): self {
+    public function setFileExtension(string $fileExtension): self {
         $this->fileExtension = $fileExtension;
 
         return $this;
@@ -142,7 +142,7 @@ class LocallyStoredImage {
      *
      * @return self
      */
-    public function setHeight($height): self {
+    public function setHeight(int $height): self {
         $this->height = $height;
 
         return $this;
@@ -163,7 +163,7 @@ class LocallyStoredImage {
      *
      * @return self
      */
-    public function setWidth($width): self {
+    public function setWidth(int $width): self {
         $this->width = $width;
 
         return $this;

@@ -45,7 +45,7 @@ class StopWords
      *
      * @return string
      */
-    public function removePunctuation($str): string {
+    public function removePunctuation(string $str): string {
         return preg_replace("/[[:punct:]]+/", '', $str);
     }
 
@@ -79,7 +79,7 @@ class StopWords
      *
      * @return WordStats
      */
-    public function getStopwordCount($content): WordStats {
+    public function getStopwordCount(string $content): WordStats {
         if (empty($content)) {
             return new WordStats();
         }

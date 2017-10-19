@@ -79,7 +79,7 @@ class MetaExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return string
      */
-    private function cleanTitle($title): string {
+    private function cleanTitle(string $title): string {
         $openGraph = $this->article()->getOpenGraph();
 
         // Check if we have the site name in OpenGraph data and it does not match the title
@@ -156,7 +156,7 @@ class MetaExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return NodeList
      */
-    private function getNodesByLowercasePropertyValue(Document $doc, $tag, $property, $value): NodeList {
+    private function getNodesByLowercasePropertyValue(Document $doc, string $tag, string $property, string $value): NodeList {
         return $doc->findXPath("descendant::".$tag."[translate(@".$property.", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')='".$value."']");
     }
 
@@ -168,7 +168,7 @@ class MetaExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return string
      */
-    private function getMetaContent(Document $doc, $property, $value, $attr = 'content'): string {
+    private function getMetaContent(Document $doc, string $property, string $value, string $attr = 'content'): string {
         $nodes = $this->getNodesByLowercasePropertyValue($doc, 'meta', $property, $value);
 
         if (!$nodes->count()) {

@@ -18,12 +18,12 @@ class ImageUtils {
      *
      * @return object
      */
-    public static function getImageDimensions($filePath): \stdClass {
+    public static function getImageDimensions(string $filePath): \stdClass {
         list($width, $height, $type) = getimagesize($filePath);
 
         return (object)[
-            'width' => $width,
-            'height' => $height,
+            'width' => (int)$width,
+            'height' => (int)$height,
             'mime' => image_type_to_mime_type($type),
         ];
     }
@@ -38,7 +38,7 @@ class ImageUtils {
      *
      * @return LocallyStoredImage[]
      */
-    public static function storeImagesToLocalFile($imageSrcs, $returnAll, Configuration $config): array {
+    public static function storeImagesToLocalFile($imageSrcs, bool $returnAll, Configuration $config): array {
         $localImages = self::handleEntity($imageSrcs, $returnAll, $config);
 
         if (empty($localImages)) {
@@ -72,7 +72,7 @@ class ImageUtils {
      *
      * @return string
      */
-    private static function getFileExtensionName($imageDetails): string {
+    private static function getFileExtensionName(string $imageDetails): string {
         $extensions = [
             'image/gif' => '.gif',
             'image/jpeg' => '.jpg',
@@ -91,9 +91,9 @@ class ImageUtils {
      * @param bool $returnAll
      * @param Configuration $config
      *
-     * @return mixed|null
+     * @return array|null
      */
-    private static function handleEntity($imageSrcs, $returnAll, $config): ?array {
+    private static function handleEntity($imageSrcs, bool $returnAll, Configuration $config): ?array {
         $guzzle = new Client();
 
         $results = [];

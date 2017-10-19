@@ -24,7 +24,7 @@ class Article {
      *
      * @return self
      */
-    public function setLanguage($language): self {
+    public function setLanguage(string $language): self {
         $this->language = $language;
 
         return $this;
@@ -47,7 +47,7 @@ class Article {
      *
      * @return self
      */
-    public function setOpenGraph($openGraph): self {
+    public function setOpenGraph(array $openGraph): self {
         $this->openGraph = $openGraph;
 
         return $this;
@@ -70,7 +70,7 @@ class Article {
      *
      * @return self
      */
-    public function setTitle($title): self {
+    public function setTitle(string $title): self {
         $this->title = $title;
 
         return $this;
@@ -94,7 +94,7 @@ class Article {
      *
      * @return self
      */
-    public function setCleanedArticleText($cleanedArticleText): self {
+    public function setCleanedArticleText(string $cleanedArticleText): self {
         $this->cleanedArticleText = $cleanedArticleText;
 
         return $this;
@@ -117,7 +117,7 @@ class Article {
      *
      * @return self
      */
-    public function setHtmlArticle($htmlArticle): self {
+    public function setHtmlArticle(string $htmlArticle): self {
         $this->htmlArticle = $htmlArticle;
 
         return $this;
@@ -140,7 +140,7 @@ class Article {
      *
      * @return self
      */
-    public function setMetaDescription($metaDescription): self {
+    public function setMetaDescription(string $metaDescription): self {
         $this->metaDescription = $metaDescription;
 
         return $this;
@@ -163,7 +163,7 @@ class Article {
      *
      * @return self
      */
-    public function setMetaKeywords($metaKeywords): self {
+    public function setMetaKeywords(string $metaKeywords): self {
         $this->metaKeywords = $metaKeywords;
 
         return $this;
@@ -186,7 +186,7 @@ class Article {
      *
      * @return self
      */
-    public function setCanonicalLink($canonicalLink): self {
+    public function setCanonicalLink(string $canonicalLink): self {
         $this->canonicalLink = $canonicalLink;
 
         return $this;
@@ -209,7 +209,7 @@ class Article {
      *
      * @return self
      */
-    public function setDomain($domain): self {
+    public function setDomain(string $domain): self {
         $this->domain = $domain;
 
         return $this;
@@ -278,7 +278,7 @@ class Article {
      *
      * @return self
      */
-    public function setAllImages($allImages = []): self {
+    public function setAllImages(array $allImages = []): self {
         $this->allImages = $allImages;
 
         return $this;
@@ -301,7 +301,7 @@ class Article {
      *
      * @return self
      */
-    public function setTags($tags): self {
+    public function setTags(array $tags): self {
         $this->tags = $tags;
 
         return $this;
@@ -324,7 +324,7 @@ class Article {
      *
      * @return self
      */
-    public function setLinks($links): self {
+    public function setLinks(array $links): self {
         $this->links = $links;
 
         return $this;
@@ -347,7 +347,7 @@ class Article {
      *
      * @return self
      */
-    public function setVideos($videos): self {
+    public function setVideos(array $videos): self {
         $this->videos = $videos;
 
         return $this;
@@ -371,7 +371,7 @@ class Article {
      *
      * @return self
      */
-    public function setFinalUrl($finalUrl): self {
+    public function setFinalUrl(string $finalUrl): self {
         $this->finalUrl = $finalUrl;
 
         return $this;
@@ -394,7 +394,7 @@ class Article {
      *
      * @return self
      */
-    public function setLinkhash($linkhash): self {
+    public function setLinkhash(string $linkhash): self {
         $this->linkhash = $linkhash;
 
         return $this;
@@ -417,7 +417,7 @@ class Article {
      *
      * @return self
      */
-    public function setRawHtml($rawHtml): self {
+    public function setRawHtml(string $rawHtml): self {
         $this->rawHtml = $rawHtml;
 
         return $this;
@@ -533,7 +533,7 @@ class Article {
      *
      * @return self
      */
-    public function setAdditionalData($additionalData): self {
+    public function setAdditionalData(string $additionalData): self {
         $this->additionalData = $additionalData;
 
         return $this;
@@ -556,7 +556,7 @@ class Article {
      *
      * @return self
      */
-    public function setOpenGraphData($openGraphData): self {
+    public function setOpenGraphData(string $openGraphData): self {
         $this->openGraphData = $openGraphData;
 
         return $this;
@@ -579,7 +579,7 @@ class Article {
      *
      * @return self
      */
-    public function setPopularWords($popularWords): self {
+    public function setPopularWords(array $popularWords): self {
         $this->popularWords = $popularWords;
 
         return $this;

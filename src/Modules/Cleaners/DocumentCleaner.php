@@ -95,7 +95,7 @@ class DocumentCleaner extends AbstractModule implements ModuleInterface {
      *
      * @return self
      */
-    private function remove($selector, callable $callback = null): self {
+    private function remove(string $selector, callable $callback = null): self {
         $nodes = $this->document()->find($selector);
 
         foreach ($nodes as $node) {
@@ -115,7 +115,7 @@ class DocumentCleaner extends AbstractModule implements ModuleInterface {
      *
      * @return self
      */
-    private function removeXPath($expression, callable $callback = null): self {
+    private function removeXPath(string $expression, callable $callback = null): self {
         $nodes = $this->document()->findXPath($expression);
 
         foreach ($nodes as $node) {
@@ -135,7 +135,7 @@ class DocumentCleaner extends AbstractModule implements ModuleInterface {
      *
      * @return self
      */
-    private function replace($selector, callable $callback = null): self {
+    private function replace(string $selector, callable $callback = null): self {
         $nodes = $this->document()->find($selector);
 
         foreach ($nodes as $node) {
@@ -222,7 +222,7 @@ class DocumentCleaner extends AbstractModule implements ModuleInterface {
      *
      * @return self
      */
-    private function convertToParagraph($selector): self {
+    private function convertToParagraph(string $selector): self {
         $nodes = $this->document()->find($selector);
 
         foreach ($nodes as $node) {

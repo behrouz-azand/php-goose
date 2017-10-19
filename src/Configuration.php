@@ -52,7 +52,7 @@ class Configuration {
     /**
      * @param mixed[] $options
      */
-    public function __construct($options = []) {
+    public function __construct(array $options = []) {
         if (is_array($options)) {
             $this->options = array_replace_recursive($this->options, $options);
         }
@@ -63,7 +63,7 @@ class Configuration {
      *
      * @return mixed
      */
-    public function get($option) {
+    public function get(string $option) {
         if (isset($this->options[$option])) {
             return $this->options[$option];
         }
@@ -77,7 +77,7 @@ class Configuration {
      *
      * @return self
      */
-    public function set($option, $value): self {
+    public function set(string $option, $value): self {
         $this->options[$option] = $value;
 
         return $this;
@@ -88,7 +88,7 @@ class Configuration {
      *
      * @return mixed
      */
-    public function getModules($category) {
+    public function getModules(string $category) {
         if (isset($this->modules[$category])) {
             return $this->modules[$category];
         }
@@ -102,7 +102,7 @@ class Configuration {
      *
      * @return self
      */
-    public function setModules($category, $classes): self {
+    public function setModules(string $category, array $classes): self {
         if ($this->areValidModules($category, $classes)) {
             $this->modules[$category] = $classes;
         }
@@ -116,7 +116,7 @@ class Configuration {
      *
      * @return self
      */
-    public function addModule($category, $class): self {
+    public function addModule(string $category, string $class): self {
         if ($this->isValidModule($category, $class)) {
             $this->modules[$category][] = $class;
         }
@@ -130,7 +130,7 @@ class Configuration {
      *
      * @return self
      */
-    public function removeModule($category, $class): self {
+    public function removeModule(string $category, string $class): self {
         if (isset($this->modules[$category])) {
             $key = array_search($class, $this->modules[$category]);
 
@@ -148,7 +148,7 @@ class Configuration {
      *
      * @return bool
      */
-    public function isValidModule($category, $class): bool {
+    public function isValidModule(string $category, string $class): bool {
         if (isset($this->modules[$category])
           && $class instanceof ModuleInterface) {
             return true;
@@ -163,7 +163,7 @@ class Configuration {
      *
      * @return bool
      */
-    public function areValidModules($category, $classes): bool {
+    public function areValidModules(string $category, array $classes): bool {
         if (is_array($classes)) {
             foreach ($classes as $class) {
                 if (!$this->isValidModule($category, $class)) {

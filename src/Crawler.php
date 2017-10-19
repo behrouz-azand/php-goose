@@ -35,7 +35,7 @@ class Crawler {
      *
      * @return Article
      */
-    public function crawl($url, $rawHTML = null): ?Article {
+    public function crawl(string $url, string $rawHTML = null): ?Article {
         $article = new Article();
 
         $parseCandidate = Helper::getCleanedUrl($url);
@@ -79,7 +79,7 @@ class Crawler {
      *
      * @return Document
      */
-    private function getDocument($rawHTML): Document {
+    private function getDocument(string $rawHTML): Document {
         $doc = new Document();
         $doc->html($rawHTML);
 
@@ -92,7 +92,7 @@ class Crawler {
      *
      * @return self
      */
-    public function modules($category, $article): self {
+    public function modules(string $category, Article $article): self {
         $modules = $this->config->getModules($category);
 
         foreach ($modules as $module) {

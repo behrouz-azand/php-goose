@@ -17,11 +17,11 @@ trait NodeCommonTrait {
      * if so it's no good
      *
      * @param Element $node
-     * @param double $limit
+     * @param float $limit
      *
      * @return bool
      */
-    private function isHighLinkDensity(Element $node, $limit = 1.0): bool {
+    private function isHighLinkDensity(Element $node, float $limit = 1.0): bool {
         $links = $node->find('a, [onclick]');
 
         if ($links->count() == 0) {

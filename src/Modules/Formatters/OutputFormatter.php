@@ -17,7 +17,7 @@ use DOMWrap\{Text, Element};
 class OutputFormatter extends AbstractModule implements ModuleInterface {
     use ArticleMutatorTrait, NodeGravityTrait, NodeCommonTrait;
 
-    /** @var double */
+    /** @var float */
     protected static $SIBLING_BASE_LINE_SCORE = 0.30;
 
     /** @var string */
@@ -303,11 +303,11 @@ class OutputFormatter extends AbstractModule implements ModuleInterface {
      * Adds any siblings that may have a decent score to this node
      *
      * @param Element $currentSibling
-     * @param int $baselineScoreForSiblingParagraphs
+     * @param float $baselineScoreForSiblingParagraphs
      *
      * @return Element[]
      */
-    private function getSiblingContent(Element $currentSibling, $baselineScoreForSiblingParagraphs): array {
+    private function getSiblingContent(Element $currentSibling, float $baselineScoreForSiblingParagraphs): array {
         $text = trim($currentSibling->text());
 
         if ($currentSibling->is('p, strong') && !empty($text)) {

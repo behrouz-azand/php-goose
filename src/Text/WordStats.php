@@ -62,7 +62,7 @@ class WordStats
      *
      * @return self
      */
-    public function setStopWordCount($wordCount): self {
+    public function setStopWordCount(int $wordCount): self {
         $this->stopWordCount = $wordCount;
 
         return $this;
@@ -80,7 +80,7 @@ class WordStats
      *
      * @return self
      */
-    public function setWordCount($wordCount): self {
+    public function setWordCount(int $wordCount): self {
         $this->wordCount = $wordCount;
 
         return $this;

@@ -126,7 +126,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return Image|null
      */
-    private function checkForLargeImages(Element $node, $parentDepthLevel, $siblingDepthLevel): ?Image {
+    private function checkForLargeImages(Element $node, int $parentDepthLevel, int $siblingDepthLevel): ?Image {
         $goodLocalImages = $this->getImageCandidates($node);
 
         $scoredLocalImages = $this->scoreLocalImages($goodLocalImages, $parentDepthLevel);
@@ -164,7 +164,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return object|null
      */
-    private function getDepthLevel(Element $node, $parentDepth, $siblingDepth): ?object {
+    private function getDepthLevel(Element $node, int $parentDepth, int $siblingDepth): ?object {
         if (is_null($node) || !($node->parent() instanceof Element)) {
             return null;
         }
@@ -206,7 +206,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return LocallyStoredImage[]
      */
-    private function scoreLocalImages($locallyStoredImages, $depthLevel): array {
+    private function scoreLocalImages($locallyStoredImages, int $depthLevel): array {
         $results = [];
         $i = 1;
         $initialArea = 0;
@@ -240,7 +240,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return bool
      */
-    private function isWorthyImage($locallyStoredImage, $depthLevel): bool {
+    private function isWorthyImage($locallyStoredImage, int $depthLevel): bool {
         if ($locallyStoredImage->getWidth() <= $this->config()->get('image_min_width')
           || $locallyStoredImage->getHeight() <= $this->config()->get('image_min_height')
           || $locallyStoredImage->getFileExtension() == 'NA'
@@ -291,7 +291,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return bool
      */
-    private function isBannerDimensions($width, $height): bool {
+    private function isBannerDimensions(int $width, int $height): bool {
         if ($width == $height) {
             return false;
         }
@@ -377,7 +377,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return LocallyStoredImage[]
      */
-    private function findImagesThatPassByteSizeTest($images): array {
+    private function findImagesThatPassByteSizeTest(array $images): array {
         $i = 0; /** @todo Re-factor how the LocallyStoredImage => Image relation works ? Note: PHP 5.6.x adds a 3rd argument to array_filter() to pass the key as well as value. */
 
         // Limit to the first 30 images
@@ -441,7 +441,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return Image|null
      */
-    private function checkForTag($selector, $attr, $type): ?Image {
+    private function checkForTag(string $selector, string $attr, string $type): ?Image {
         $meta = $this->article()->getRawDoc()->find($selector);
 
         if (!$meta->count()) {
@@ -495,7 +495,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return LocallyStoredImage|null
      */
-    private function getLocallyStoredImage($imageSrc, $returnAll = false): ?LocallyStoredImage {
+    private function getLocallyStoredImage(string $imageSrc, bool $returnAll = false): ?LocallyStoredImage {
         $locallyStoredImages = ImageUtils::storeImagesToLocalFile([$imageSrc], $returnAll, $this->config());
 
         return array_shift($locallyStoredImages);
@@ -507,7 +507,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return LocallyStoredImage[]
      */
-    private function getLocallyStoredImages($imageSrcs, $returnAll = false): array {
+    private function getLocallyStoredImages($imageSrcs, bool $returnAll = false): array {
         return ImageUtils::storeImagesToLocalFile($imageSrcs, $returnAll, $this->config());
     }
 
@@ -591,7 +591,7 @@ class ImageExtractor extends AbstractModule implements ModuleInterface {
      *
      * @return string
      */
-    private function buildImagePath($imageSrc): string {
+    private function buildImagePath(string $imageSrc): string {
         $parts = array(
             'scheme',
             'host',

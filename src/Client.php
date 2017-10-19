@@ -25,7 +25,7 @@ class Client {
      *
      * @return mixed
      */
-    public function __call($name, $arguments) {
+    public function __call(string $name, $arguments) {
         if (method_exists($this->config, $name)) {
             return call_user_func_array(array($this->config, $name), $arguments);
         }
@@ -39,7 +39,7 @@ class Client {
      *
      * @return Article
      */
-    public function extractContent($url, $rawHTML = null): ?Article {
+    public function extractContent(string $url, string $rawHTML = null): ?Article {
         $crawler = new Crawler($this->config);
         $article = $crawler->crawl($url, $rawHTML);
 
